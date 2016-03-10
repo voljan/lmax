@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div style="padding: 50px">
+        <div ng-init="albums = [ 
+               { name: 'madrid1309', title: 'Weekend in Madrid', date: '2013-09-01', description: 'My favourite trip' },
+               { name: 'iceland1404', title: 'Holiday in Iceland', date: '2014-04-15', description: 'This place is cold' },
+               { name: 'thailand1210', title: 'Surfing in Thailand', date: '2012-10-01', description: 'So hot!' },
+               { name: 'australia1207', title: 'Wedding in Australia', date: '2012-07-31', description: 'So many kangaroos and koalas!' } ]">
+            <input type="text" ng-model="searchFor" size="30" /> {{ searchFor }}
+            <p>There are {{albums.length}} albums available to view</p>
+            <ul>
+                <li ng-repeat="album in albums | filter: searchFor | orderBy: 'date'">
+                    <ul>
+                        <li ng-repeat="( key, value) in album"><strong>{{ key  }}</strong> = {{ value }} </li>
+                    </ul>
+
+                    {{album.title}} {{album.date}}
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+    <script src=" js/angular.min.js "></script>
+    <script src="js/jquery-2.1.4.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+</body>
+
+</html>
