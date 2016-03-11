@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .even {
+            color: red;
+        }
+        
+        .odd {
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,12 +26,10 @@
             <input type="text" ng-model="searchFor" size="30" /> {{ searchFor }}
             <p>There are {{albums.length}} albums available to view</p>
             <ul>
-                <li ng-repeat="album in albums | filter: searchFor | orderBy: 'date'">
-                    <ul>
-                        <li ng-repeat="( key, value) in album"><strong>{{ key  }}</strong> = {{ value }} </li>
-                    </ul>
+                <li ng-repeat="album in albums | filter: searchFor | orderBy: 'date'" ng-class="{even: $even, odd: $odd}">
 
-                    {{album.title}} {{album.date}}
+
+                    {{ $index+1 }} - {{album.title}} {{album.date}}
                 </li>
             </ul>
 
